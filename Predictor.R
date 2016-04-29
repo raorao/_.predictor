@@ -71,12 +71,15 @@ recursive.feature.elimination <- function(data) {
 }
 
 sandbox <- function(data) {
+  writeLines("\n\nSandbox Mode!!!\n\n")
   # recursive.feature.eli mination(data)
   model <- train.model(data)
   evaluate.model(model, data)
 }
 
 production <- function(train.data, test.data) {
+  writeLines("\n\nProduction Mode !!!\n\n")
+
   data.test  <- prep.data(test.data)
   model      <- train.model(train.data)
 
@@ -88,7 +91,7 @@ production <- function(train.data, test.data) {
 
   # clean up output file
 
-  writeLines('\n\noutput is ready at production.csv\n\n')
+  writeLines('\n\nOutput is ready at production.csv\n\n')
   write.csv(output.file, file = 'production.csv', row.names = F)
 }
 
